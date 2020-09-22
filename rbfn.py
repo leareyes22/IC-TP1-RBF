@@ -1,63 +1,51 @@
+# Importar librerías
 import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
 
-class RBFN(object):
+# Crear problema
+p = 50 # Número de muestras
+x = np.linspace(-5, 5, p).reshape(1,-1)
+y = 2 * np.cos(x) + np.sin(3*x) + 5
 
-    def __init__(self, hidden_shape, sigma=1.0):
-        """ Red Neuronal de Función de Base Radial
-        # Arguments
-            input_shape: Dimensión de los datos de entrada
-            e.g. scalar functions have should have input_dimension = 1
-            hidden_shape: Número de neuronas ocultas de función de base radial (centroides).
-        """
-        self.hidden_shape = hidden_shape
-        self.sigma = sigma
-        self.centers = None
-        self.weights = None
+# Dibujar puntos
+plt.plot(x,y, 'or')
 
-    def _kernel_function(self, center, data_point):
-        return np.exp(-self.sigma*np.linalg.norm(center-data_point)**2)
 
-    def _calculate_interpolation_matrix(self, X):
-        """ Calcula la matriz de interpolación usando una función de activación.
-        # Argumentos.
-            X: Datos de entrenamiento.
-        # Input shape.
-            (num_data_samples, input_shape)
-        # Retorna.
-            G: Matriz de interpolación.
-        """
-        G = np.zeros((len(X), self.hidden_shape))
-        for data_point_arg, data_point in enumerate(X):
-            for center_arg, center in enumerate(self.centers):
-                G[data_point_arg, center_arg] = self._kernel_function(
-                        center, data_point)
-        return G
+# Definir número de neuronas
+k = 20
 
-    def _select_centers(self, X):
-        random_args = np.random.choice(len(X), self.hidden_shape)
-        centers = X[random_args]
-        return centers
+# Agrupar puntos en clústers
+model = KMeans(n_clusters=k)
+model.fit(x.T)
 
-    def fit(self, X, Y):
-        """ Ajusta los pesos usando regresión lineal.
-        # Argumentos
-            X: Muestras de entrenamiento.
-            Y: Objetivos.
-        # Input shape.
-            X: (num_data_samples, input_shape)
-            Y: (num_data_samples, input_shape)
-        """
-        self.centers = self._select_centers(X)
-        G = self._calculate_interpolation_matrix(X)
-        self.weights = np.dot(np.linalg.pinv(G), Y)
+# Extraer centroides
+c = model.cluster_centers_
 
-    def predict(self, X):
-        """
-        # Argumentos
-            X: Datos de prueba.
-        # Input shape.
-            (num_test_samples, input_shape)
-        """
-        G = self._calculate_interpolation_matrix(X)
-        predictions = np.dot(G, self.weights)
-        return predictions
+# Calcular el sigma
+sigma = (max(c)-min(c))/np.sqrt(2*k)
+sigma = sigma[0]
+
+# Calcular matriz G
+G = np.zeros((p,k))
+for i in range(p):
+    for j in range(k):
+        dist = np.linalg.norm(x[0,i]-c[j], 2)
+        G[i,j] = np.exp((-1/(sigma**2))*dist**2)
+
+W = np.dot(np.linalg.pinv(G), y.T)
+
+# Propagar la red
+p = 200
+xnew = x = np.linspace(-5, 5, p).reshape(1,-1)
+
+G = np.zeros((p,k))
+for i in range(p):
+    for j in range(k):
+        dist = np.linalg.norm(x[0,i]-c[j], 2)
+        G[i,j] = np.exp((-1/(sigma**2))*dist**2)
+
+ynew = np.dot(G, W)
+# Dibujar puntos
+plt.plot(xnew.T, ynew, '-b')
+plt.show()
