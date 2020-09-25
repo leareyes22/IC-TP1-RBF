@@ -50,6 +50,4 @@ ynew = np.dot(G, W) # Salida de la red
 plt.plot(xnew.T, ynew, '-b')
 plt.show()
 
-# Carga de datos
-testdata = np.asarray(pd.read_csv('testdata.csv', sep=',', header=None))
-traindata = np.asarray(pd.read_csv('traindata.csv', sep=',', header=None))
+
