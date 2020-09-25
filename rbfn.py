@@ -2,6 +2,7 @@
 import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Crear problema (Espacio de entrada y salida esperada)
 p = 50 # Número de muestras
@@ -48,3 +49,7 @@ ynew = np.dot(G, W) # Salida de la red
 # Dibujar puntos
 plt.plot(xnew.T, ynew, '-b')
 plt.show()
+
+# Carga de datos
+testdata = np.asarray(pd.read_csv('testdata.csv', sep=',', header=None))
+traindata = np.asarray(pd.read_csv('traindata.csv', sep=',', header=None))
