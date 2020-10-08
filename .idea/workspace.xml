@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b631cda6-25ef-4e81-b37c-91ede975ba7d" name="Default Changelist" comment="Final con cálculo de error." />
+    <list default="true" id="b631cda6-25ef-4e81-b37c-91ede975ba7d" name="Default Changelist" comment="Final con cálculo de error.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recreacion_paper.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/recreacion_paper.ipynb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +53,8 @@
       <workItem from="1601308193231" duration="195000" />
       <workItem from="1601388568482" duration="2258000" />
       <workItem from="1601412877291" duration="1700000" />
-      <workItem from="1601928560011" duration="2537000" />
+      <workItem from="1601928560011" duration="2709000" />
+      <workItem from="1602160020070" duration="977000" />
     </task>
     <task id="LOCAL-00001" summary="Final con cálculo de error.">
       <created>1601930954870</created>
@@ -75,12 +79,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Final con cálculo de error." />
     <option name="LAST_COMMIT_MESSAGE" value="Final con cálculo de error." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="185" y="115" key="#xdebugger.XInspectDialog" timestamp="1602160445233">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="185" y="115" key="#xdebugger.XInspectDialog/0.0.1366.728@0.0.1366.728" timestamp="1602160445233" />
     <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1601413143602">
       <screen x="1360" y="0" width="1366" height="728" />
     </state>
@@ -97,5 +106,9 @@
       <screen x="1360" y="0" width="1366" height="728" />
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1360.728/1360.0.1366.728@1360.0.1366.728" timestamp="1601413143601" />
+    <state x="1635" y="95" key="Vcs.Push.Dialog.v2" timestamp="1601931011463">
+      <screen x="1360" y="0" width="1366" height="728" />
+    </state>
+    <state x="1635" y="95" key="Vcs.Push.Dialog.v2/0.0.1360.728/1360.0.1366.728@1360.0.1366.728" timestamp="1601931011463" />
   </component>
 </project>
